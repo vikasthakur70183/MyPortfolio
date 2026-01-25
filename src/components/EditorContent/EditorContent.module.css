@@ -5,7 +5,7 @@
   font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
   font-size: 14px;
   line-height: 1.5;
-  background-color: #1e1e1e;
+  background-color: #0f172b;
   color: #d4d4d4;
   overflow: hidden;
 }
@@ -13,7 +13,7 @@
 .lineNumbers {
   display: flex;
   flex-direction: column;
-  background-color: #1e1e1e;
+  background-color: #0f172b;
   color: #858585;
   padding: 0;
   text-align: right;

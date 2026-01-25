@@ -1,6 +1,6 @@
 .tabsContainer {
   display: flex;
-  background-color: #252526;
+  background-color: #0f172b;
   border-bottom: 1px solid #3e3e3e;
   height: 35px;
   flex-shrink: 0;
@@ -25,7 +25,7 @@
   display: flex;
   align-items: center;
   padding: 0 12px;
-  background-color: #2d2d2d;
+  background-color: #0f172b;
   color: #969696;
   cursor: pointer;
   border-right: 1px solid #3e3e42;
@@ -41,7 +41,7 @@
 }
 
 .tab.active {
-  background-color: #1e1e1e;
+  background-color: #0f172b;
   color: #ffffff;
 }
 

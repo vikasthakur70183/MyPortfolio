@@ -5,6 +5,7 @@
 .home {
   width: 100%;
   min-height: calc(100vh - 96px); /* header + footer space */
+  background: #0f172b;
   background: radial-gradient(
     circle at 70% 40%,
     #1b3a4b 0%,
@@ -61,7 +62,7 @@
 /* ===================== CODE BLOCK ===================== */
 
 .codeBlock {
-  background: rgba(13, 17, 23, 0.6);
+  background: rgba(15, 23, 42, 0.6);
   border-left: 2px solid #30363d;
   padding: 1rem 1.25rem;
   max-width: 420px;
