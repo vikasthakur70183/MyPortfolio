@@ -3,8 +3,8 @@
    ========================================================================== */
 
 .footer {
-  --bg-outer: #0d1117;
-  --bg-inner: #161b22;
+  --bg-outer: #0f172b;
+  --bg-inner: #0f172b;
   --border-main: #30363d;
   --border-soft: #21262d;
 
@@ -22,8 +22,6 @@
 
 /* ===================== INNER PANEL ===================== */
 .container {
-  max-width: 1200px;
-
   display: flex;
   justify-content: space-between;
   align-items: stretch;
