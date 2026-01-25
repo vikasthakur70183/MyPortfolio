@@ -1,0 +1,74 @@
+.editorContainer {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  background-color: #1e1e1e;
+  color: #d4d4d4;
+  overflow: hidden;
+}
+
+.lineNumbers {
+  display: flex;
+  flex-direction: column;
+  background-color: #1e1e1e;
+  color: #858585;
+  padding: 0;
+  text-align: right;
+  -webkit-user-select: none;
+  user-select: none;
+  border-right: 1px solid #3e3e3e;
+  min-width: 50px;
+  flex-shrink: 0;
+}
+
+.lineNumber {
+  padding: 0 12px;
+  line-height: 1.5;
+  height: 21px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.codeContent {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-height: 0;
+  padding: 0;
+}
+
+.codeLine {
+  display: flex;
+  align-items: flex-start;
+  min-height: 21px;
+  height: 21px;
+  padding: 0 16px;
+}
+
+.codeLine pre {
+  margin: 0;
+  white-space: pre;
+  word-wrap: normal;
+  overflow: visible;
+  line-height: 1.5;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.keyword {
+  color: #569cd6;
+}
+
+.string {
+  color: #ce9178;
+}
+
+.comment {
+  color: #6a9955;
+  font-style: italic;
+}
+

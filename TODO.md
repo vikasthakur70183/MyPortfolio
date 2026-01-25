@@ -1,18 +1,36 @@
-# TODO: Create Production-Grade React Home Page
+# VS Code-like Editor Styling - Implementation Plan
 
-## Completed Tasks
-- [x] Create src/pages/Home/Home.jsx - Main Home page component with two-section layout (text left, game right)
-- [x] Create src/pages/Home/Home.module.css - Styling for Home page with dark gradient background, monospace font, and responsive layout
-- [x] Create src/components/SnakeGame/SnakeGame.jsx - Reusable SnakeGame component with grid-based game logic, keyboard controls, and state management
-- [x] Create src/components/SnakeGame/SnakeGame.module.css - Styling for SnakeGame with dark panel, glowing grid cells, and buttons
+## Tasks
 
-## Implementation Details
-- Used React 18 functional components only
-- Implemented CSS Modules for all styling (no inline styles)
-- No external UI libraries used
-- SnakeGame is a separate, reusable component
-- Game includes idle, playing, and gameOver states
-- Responsive design: two-column on desktop, stacked on mobile
-- Clean, scalable code with proper state management and effects
-- Accessible markup with aria-labels
-- Keyboard-friendly controls for the game
+### 1. EditorLayout.module.css
+- [x] Fix duplicate `.sidebar` class issue
+- [x] Ensure full height flex layout
+- [x] Add responsive breakpoints for tablet/mobile
+- [x] Verify dividers and spacing
+
+### 2. Sidebar.module.css
+- [x] Change to monospace font (Fira Code)
+- [x] Match VS Code sidebar styling
+- [x] Update active file state colors
+- [x] Compact padding and dense UI
+- [x] Fix file icon positioning
+
+### 3. EditorTabs.module.css
+- [x] Add active tab underline accent color
+- [x] Monospace font
+- [x] Proper alignment with editor content
+
+### 4. EditorContent.module.css
+- [x] Align line numbers with code content
+- [x] Remove extra whitespace below editor
+- [x] Proper vertical scrolling
+- [x] Match editor background exactly
+
+### 5. SnippetPanel.module.css
+- [ ] Match editor background (#1e1e1e)
+- [ ] Update card styling for VS Code look
+- [ ] Center "No snippets available" message
+- [ ] Consistent padding and borders
+
+## Status: In Progress
+

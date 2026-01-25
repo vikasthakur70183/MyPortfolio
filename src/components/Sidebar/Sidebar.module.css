@@ -1,0 +1,121 @@
+.sidebar {
+  background-color: #1e1e1e;
+  color: #c9d1d9;
+  font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+  font-size: 13px;
+  width: 250px;
+  height: 100%;
+  border-right: 1px solid #3e3e3e;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex-shrink: 0;
+}
+
+.fileTree {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.folderItem {
+  margin: 0;
+}
+
+.folderHeader {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+  padding: 4px 8px;
+  border: none;
+  background: transparent;
+  color: #c9d1d9;
+  font-family: inherit;
+  font-size: inherit;
+  text-align: left;
+  transition: background-color 0.1s ease;
+}
+
+.folderHeader:hover {
+  background-color: #2a2d2e;
+}
+
+.chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+  font-size: 12px;
+  color: #c5c5c5;
+  transition: transform 0.15s ease;
+  flex-shrink: 0;
+}
+
+.chevron.expanded {
+  transform: rotate(90deg);
+}
+
+.folderIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+  font-size: 14px;
+  color: #dcb67a;
+  flex-shrink: 0;
+}
+
+.folderContent {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-left: 12px;
+}
+
+.fileItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: calc(100% - 20px);
+  margin-left: 20px;
+  cursor: pointer;
+  padding: 3px 8px;
+  border: none;
+  background: transparent;
+  color: #c9d1d9;
+  font-family: inherit;
+  font-size: inherit;
+  text-align: left;
+  transition: background-color 0.1s ease;
+}
+
+.fileItem:hover {
+  background-color: #2a2d2e;
+}
+
+.fileItem.active {
+  background-color: #37373d;
+  color: #ffffff;
+}
+
+.fileItem.active:hover {
+  background-color: #3e3e3e;
+}
+
+.fileIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+  font-size: 14px;
+  color: #519aba;
+  flex-shrink: 0;
+}
+

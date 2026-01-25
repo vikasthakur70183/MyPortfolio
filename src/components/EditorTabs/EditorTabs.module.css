@@ -1,0 +1,82 @@
+.tabsContainer {
+  display: flex;
+  background-color: #252526;
+  border-bottom: 1px solid #3e3e3e;
+  height: 35px;
+  flex-shrink: 0;
+}
+
+.tabs {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: 100%;
+}
+
+.tabs::-webkit-scrollbar {
+  height: 3px;
+}
+
+.tabs::-webkit-scrollbar-thumb {
+  background-color: #424242;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  background-color: #2d2d2d;
+  color: #969696;
+  cursor: pointer;
+  border-right: 1px solid #3e3e42;
+  font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+  font-size: 13px;
+  height: 100%;
+  transition: background-color 0.15s ease;
+  position: relative;
+}
+
+.tab:hover {
+  background-color: #333;
+}
+
+.tab.active {
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+
+.tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #007fd4;
+}
+
+.tabLabel {
+  margin-right: 8px;
+  white-space: nowrap;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: #969696;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 1;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeButton:hover {
+  background-color: #3e3e42;
+  color: #ffffff;
+}
+
