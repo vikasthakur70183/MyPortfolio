@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import styles from './SnakeGame.module.css';
 
-const GRID_SIZE = 20;
-const INITIAL_SNAKE = [{ x: 10, y: 10 }];
-const INITIAL_FOOD = { x: 15, y: 15 };
+const GRID_SIZE = 15;
+const INITIAL_SNAKE = [{ x: 7, y: 7 }];
 const DIRECTIONS = {
   UP: { x: 0, y: -1 },
   DOWN: { x: 0, y: 1 },
@@ -13,147 +12,126 @@ const DIRECTIONS = {
 
 function SnakeGame() {
   const [snake, setSnake] = useState(INITIAL_SNAKE);
-  const [food, setFood] = useState(INITIAL_FOOD);
+  const [food, setFood] = useState({ x: 10, y: 5 });
   const [direction, setDirection] = useState(DIRECTIONS.RIGHT);
-  const [gameState, setGameState] = useState('idle'); // idle, playing, gameOver
-  const [score, setScore] = useState(0);
+  const [state, setState] = useState('idle'); // idle | playing | gameOver
+  const [foodLeft, setFoodLeft] = useState(10);
 
-  const generateFood = useCallback(() => {
-    let newFood;
-    do {
-      newFood = {
-        x: Math.floor(Math.random() * GRID_SIZE),
-        y: Math.floor(Math.random() * GRID_SIZE),
-      };
-    } while (snake.some(segment => segment.x === newFood.x && segment.y === newFood.y));
-    return newFood;
-  }, [snake]);
+  const generateFood = () => ({
+    x: Math.floor(Math.random() * GRID_SIZE),
+    y: Math.floor(Math.random() * GRID_SIZE),
+  });
 
   const moveSnake = useCallback(() => {
-    setSnake(currentSnake => {
-      const newSnake = [...currentSnake];
-      const head = { ...newSnake[0] };
-      head.x += direction.x;
-      head.y += direction.y;
+    setSnake(prev => {
+      const head = { ...prev[0], x: prev[0].x + direction.x, y: prev[0].y + direction.y };
 
-      // Check wall collision
-      if (head.x < 0 || head.x >= GRID_SIZE || head.y < 0 || head.y >= GRID_SIZE) {
-        setGameState('gameOver');
-        return currentSnake;
+      if (
+        head.x < 0 ||
+        head.y < 0 ||
+        head.x >= GRID_SIZE ||
+        head.y >= GRID_SIZE ||
+        prev.some(p => p.x === head.x && p.y === head.y)
+      ) {
+        setState('gameOver');
+        return prev;
       }
 
-      // Check self collision
-      if (newSnake.some(segment => segment.x === head.x && segment.y === head.y)) {
-        setGameState('gameOver');
-        return currentSnake;
-      }
+      const next = [head, ...prev];
 
-      newSnake.unshift(head);
-
-      // Check food collision
       if (head.x === food.x && head.y === food.y) {
-        setScore(prev => prev + 1);
         setFood(generateFood());
+        setFoodLeft(f => Math.max(0, f - 1));
       } else {
-        newSnake.pop();
+        next.pop();
       }
 
-      return newSnake;
+      return next;
     });
-  }, [direction, food, generateFood]);
-
-  const handleKeyPress = useCallback((e) => {
-    if (gameState !== 'playing') return;
-
-    switch (e.key) {
-      case 'ArrowUp':
-        if (direction !== DIRECTIONS.DOWN) setDirection(DIRECTIONS.UP);
-        break;
-      case 'ArrowDown':
-        if (direction !== DIRECTIONS.UP) setDirection(DIRECTIONS.DOWN);
-        break;
-      case 'ArrowLeft':
-        if (direction !== DIRECTIONS.RIGHT) setDirection(DIRECTIONS.LEFT);
-        break;
-      case 'ArrowRight':
-        if (direction !== DIRECTIONS.LEFT) setDirection(DIRECTIONS.RIGHT);
-        break;
-      default:
-        break;
-    }
-  }, [direction, gameState]);
+  }, [direction, food]);
 
   useEffect(() => {
-    window.addEventListener('keydown', handleKeyPress);
-    return () => window.removeEventListener('keydown', handleKeyPress);
-  }, [handleKeyPress]);
+    if (state !== 'playing') return;
+    const id = setInterval(moveSnake, 140);
+    return () => clearInterval(id);
+  }, [state, moveSnake]);
 
   useEffect(() => {
-    if (gameState === 'playing') {
-      const gameInterval = setInterval(moveSnake, 150);
-      return () => clearInterval(gameInterval);
-    }
-  }, [gameState, moveSnake]);
+    const handleKey = e => {
+      if (state !== 'playing') return;
+      if (e.key === 'ArrowUp' && direction !== DIRECTIONS.DOWN) setDirection(DIRECTIONS.UP);
+      if (e.key === 'ArrowDown' && direction !== DIRECTIONS.UP) setDirection(DIRECTIONS.DOWN);
+      if (e.key === 'ArrowLeft' && direction !== DIRECTIONS.RIGHT) setDirection(DIRECTIONS.LEFT);
+      if (e.key === 'ArrowRight' && direction !== DIRECTIONS.LEFT) setDirection(DIRECTIONS.RIGHT);
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [direction, state]);
 
   const startGame = () => {
     setSnake(INITIAL_SNAKE);
-    setFood(INITIAL_FOOD);
+    setFood(generateFood());
     setDirection(DIRECTIONS.RIGHT);
-    setScore(0);
-    setGameState('playing');
-  };
-
-  const skipGame = () => {
-    setGameState('idle');
-  };
-
-  const renderGrid = () => {
-    const grid = [];
-    for (let y = 0; y < GRID_SIZE; y++) {
-      for (let x = 0; x < GRID_SIZE; x++) {
-        const isSnakeHead = snake[0] && snake[0].x === x && snake[0].y === y;
-        const isSnakeBody = snake.slice(1).some(segment => segment.x === x && segment.y === y);
-        const isFood = food.x === x && food.y === y;
-
-        let cellClass = styles.cell;
-        if (isSnakeHead) cellClass += ` ${styles.snakeHead}`;
-        else if (isSnakeBody) cellClass += ` ${styles.snakeBody}`;
-        else if (isFood) cellClass += ` ${styles.food}`;
-
-        grid.push(
-          <div key={`${x}-${y}`} className={cellClass}></div>
-        );
-      }
-    }
-    return grid;
+    setFoodLeft(10);
+    setState('playing');
   };
 
   return (
-    <div className={styles.gamePanel}>
-      <div className={styles.gameGrid}>
-        {renderGrid()}
-      </div>
-      <div className={styles.controls}>
-        {gameState === 'idle' && (
-          <button className={styles.button} onClick={startGame} aria-label="Start Snake Game">
-            start-game
-          </button>
-        )}
-        {gameState === 'playing' && (
-          <button className={styles.button} onClick={skipGame} aria-label="Skip Snake Game">
-            skip
-          </button>
-        )}
-        {gameState === 'gameOver' && (
-          <div>
-            <p className={styles.gameOverText}>Game Over! Score: {score}</p>
-            <button className={styles.button} onClick={startGame} aria-label="Restart Snake Game">
-              restart
-            </button>
+    <div className={styles.wrapper}>
+      <div className={styles.card}>
+        {/* GAME GRID */}
+        <div className={styles.gameArea}>
+          <div className={styles.grid}>
+            {Array.from({ length: GRID_SIZE * GRID_SIZE }).map((_, i) => {
+              const x = i % GRID_SIZE;
+              const y = Math.floor(i / GRID_SIZE);
+              const isHead = snake[0]?.x === x && snake[0]?.y === y;
+              const isBody = snake.slice(1).some(s => s.x === x && s.y === y);
+              const isFood = food.x === x && food.y === y;
+
+              return (
+                <div
+                  key={i}
+                  className={`${styles.cell} ${
+                    isHead ? styles.head : isBody ? styles.body : isFood ? styles.food : ''
+                  }`}
+                />
+              );
+            })}
           </div>
-        )}
-        <div className={styles.score}>
-          Food: {score}
+
+          {state === 'gameOver' && (
+            <div className={styles.overlay}>
+              <p>GAME OVER!</p>
+              <button onClick={startGame}>start-again</button>
+            </div>
+          )}
+        </div>
+
+        {/* SIDE PANEL */}
+        <div className={styles.sidePanel}>
+          <div className={styles.help}>
+            <p>// use keyboard</p>
+            <p>// arrows to play</p>
+            <div className={styles.keys}>
+              <span>▲</span>
+              <span>◀</span>
+              <span>▼</span>
+              <span>▶</span>
+            </div>
+          </div>
+
+          <div className={styles.food}>
+            <p>// food left</p>
+            <div className={styles.dots}>
+              {Array.from({ length: 10 }).map((_, i) => (
+                <span key={i} className={i < foodLeft ? styles.dotActive : styles.dot} />
+              ))}
+            </div>
+          </div>
+
+          {state === 'idle' && <button onClick={startGame}>start-game</button>}
+          {state === 'playing' && <button className={styles.skip}>skip</button>}
         </div>
       </div>
     </div>
