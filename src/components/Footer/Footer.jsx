@@ -4,57 +4,30 @@ import styles from './Footer.module.css'
 function Footer() {
   return (
     <footer className={styles.footer} role="contentinfo">
-      <div className={styles.leftSection}>
-        <span className={styles.findMeText}>find me in:</span>
-        
-        <div className={styles.socialIcons} role="group" aria-label="Social media links">
-          <button
-            type="button"
-            className={styles.iconPlaceholder}
-            aria-label="Find me on Twitter"
-            tabIndex={0}
-          >
-            <span aria-hidden="true">▢</span>
-          </button>
-          
-          <button
-            type="button"
-            className={styles.iconPlaceholder}
-            aria-label="Find me on LinkedIn"
-            tabIndex={0}
-          >
-            <span aria-hidden="true">▢</span>
-          </button>
-          
-          <button
-            type="button"
-            className={styles.iconPlaceholder}
-            aria-label="Find me on another platform"
-            tabIndex={0}
-          >
-            <span aria-hidden="true">▢</span>
+      <div className={styles.container}>
+        <div className={styles.leftSection}>
+          <span className={styles.findMeText}>find me in:</span>
+
+          <div className={styles.socialIcons} role="group" aria-label="Social media links">
+            <button className={styles.iconTab} aria-label="Twitter">
+              <i className="ri-twitter-x-fill" />
+            </button>
+
+            <button className={styles.iconTab} aria-label="LinkedIn">
+              <i className="ri-linkedin-fill" />
+            </button>
+          </div>
+        </div>
+
+        <div className={styles.rightSection}>
+          <span className={styles.username}>@username</span>
+          <button className={styles.iconTab} aria-label="GitHub">
+            <i className="ri-github-fill" />
           </button>
         </div>
-      </div>
-      
-      <div className={styles.centerSection} aria-hidden="true">
-      </div>
-      
-      <div className={styles.rightSection}>
-        <span className={styles.username}>@username</span>
-        
-        <button
-          type="button"
-          className={styles.githubPlaceholder}
-          aria-label="View GitHub profile"
-          tabIndex={0}
-        >
-          <span aria-hidden="true">▢</span>
-        </button>
       </div>
     </footer>
   )
 }
 
 export default Footer
-

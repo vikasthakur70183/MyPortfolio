@@ -1,4 +1,13 @@
-#root { 
+/* Fira Code Font Import from Google Fonts */
+/* Weights: 400 (Regular), 500 (Medium), 600 (SemiBold) */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap');
+
+:root {
+  /* Global monospace font with CSS variable for consistency */
+  --font-mono: 'Fira Code', 'SF Mono', 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+}
+
+#root {
   margin: 0;
   padding: 0;
 }
@@ -6,4 +15,6 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: var(--font-mono);
+  font-display: swap;
 }
