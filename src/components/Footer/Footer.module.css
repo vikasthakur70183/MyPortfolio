@@ -1,0 +1,245 @@
+.footer {
+  --footer-bg-start: #0a0e17;
+  --footer-bg-end: #0f141f;
+  --footer-border: rgba(100, 120, 150, 0.15);
+  --footer-glow: rgba(64, 180, 200, 0.08);
+  --text-primary: #8892a0;
+  --text-secondary: #5a6474;
+  --text-muted: #3d4555;
+  --icon-hover-bg: rgba(100, 120, 150, 0.1);
+  --icon-hover-border: rgba(100, 120, 150, 0.25);
+  --transition-fast: 0.2s ease;
+  --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  min-height: 56px;
+  padding: 0 2rem;
+
+  background: linear-gradient(
+    180deg,
+    var(--footer-bg-start) 0%,
+    var(--footer-bg-end) 100%
+  );
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border-top: 1px solid var(--footer-border);
+  box-shadow: 
+    0 1px 0 var(--footer-border),
+    0 4px 20px var(--footer-glow),
+    inset 0 1px 0 var(--footer-glow);
+
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.leftSection {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.findMeText {
+  color: var(--text-secondary);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.iconPlaceholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  background: transparent;
+  border: 1px solid var(--footer-border);
+  border-radius: 6px;
+  cursor: pointer;
+
+  color: var(--text-muted);
+
+  transition: all var(--transition-smooth);
+
+  padding: 0;
+}
+
+.iconPlaceholder:hover {
+  background: var(--icon-hover-bg);
+  border-color: var(--icon-hover-border);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+  box-shadow: 
+    0 2px 8px var(--footer-glow),
+    0 0 12px var(--footer-glow);
+}
+
+.iconPlaceholder:focus {
+  outline: none;
+  border-color: rgba(64, 180, 200, 0.4);
+  box-shadow: 
+    0 0 0 2px rgba(64, 180, 200, 0.15),
+    0 2px 8px var(--footer-glow);
+}
+
+.centerSection {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  min-width: 80px;
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.username {
+  color: var(--text-primary);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.githubPlaceholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 28px;
+  height: 28px;
+
+  background: transparent;
+  border: 1px solid var(--footer-border);
+  border-radius: 6px;
+  cursor: pointer;
+
+  color: var(--text-muted);
+
+  transition: all var(--transition-smooth);
+
+  padding: 0;
+}
+
+.githubPlaceholder:hover {
+  background: var(--icon-hover-bg);
+  border-color: var(--icon-hover-border);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+  box-shadow: 
+    0 2px 8px var(--footer-glow),
+    0 0 12px var(--footer-glow);
+}
+
+.githubPlaceholder:focus {
+  outline: none;
+  border-color: rgba(64, 180, 200, 0.4);
+  box-shadow: 
+    0 0 0 2px rgba(64, 180, 200, 0.15),
+    0 2px 8px var(--footer-glow);
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 0 1.25rem;
+    min-height: 52px;
+  }
+
+  .leftSection {
+    gap: 0.75rem;
+  }
+
+  .socialIcons {
+    gap: 0.375rem;
+  }
+
+  .iconPlaceholder {
+    width: 28px;
+    height: 28px;
+  }
+
+  .githubPlaceholder {
+    width: 26px;
+    height: 26px;
+  }
+
+  .rightSection {
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 1rem 1rem;
+
+    min-height: fit-content;
+    gap: 0.75rem;
+  }
+
+  .leftSection {
+    order: 1;
+    justify-content: center;
+    width: 100%;
+    gap: 0.625rem;
+  }
+
+  .centerSection {
+    order: 2;
+    display: none;
+  }
+
+  .rightSection {
+    order: 3;
+    justify-content: center;
+    width: 100%;
+    gap: 0.5rem;
+  }
+
+  .iconPlaceholder {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+  }
+
+  .githubPlaceholder {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+  }
+}
+
+@media print {
+  .footer {
+    background: none;
+    border-top: 1px solid #ccc;
+    box-shadow: none;
+  }
+
+  .iconPlaceholder,
+  .githubPlaceholder {
+    border: 1px solid #999;
+  }
+}
+

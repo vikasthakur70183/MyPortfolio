@@ -1,0 +1,364 @@
+/* ==========================================================================
+   Header Styles - Dark Futuristic Developer Portfolio
+   Refined for segmented tab design with bordered panels
+   ========================================================================== */
+
+/* CSS Custom Properties - Design Tokens */
+.header {
+  --header-bg-outer: #0d1117;
+  --header-bg-inner: #161b22;
+  --header-border: #30363d;
+  --header-border-light: #21262d;
+  --text-primary: #c9d1d9;
+  --text-secondary: #8b949e;
+  --text-muted: #6e7681;
+  --accent-color: #58a6ff;
+  --accent-glow: rgba(88, 166, 255, 0.15);
+  --nav-hover-bg: rgba(177, 186, 212, 0.12);
+  --transition-fast: 0.15s ease;
+
+  position: relative;
+  width: 100%;
+  background: var(--header-bg-outer);
+  border-bottom: 1px solid var(--header-border);
+}
+
+/* ==========================================================================
+   Container - Centered bordered panel design
+   VISUAL CHANGE: Added inner bordered container appearance
+   ========================================================================== */
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  padding: 0 1rem;
+
+  min-height: 56px;
+
+  /* Inner container with distinct border */
+  background: var(--header-bg-inner);
+  border: 1px solid var(--header-border);
+  border-top: none;
+
+  /* Subtle inner glow - reduced from excessive blur */
+  box-shadow:
+    inset 0 1px 0 var(--header-border-light),
+    0 1px 3px rgba(0, 0, 0, 0.1);
+
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+}
+
+/* ==========================================================================
+   Brand Section - Left side logo/brand name
+   ========================================================================== */
+.brand {
+  flex-shrink: 0;
+  padding: 0 0.75rem;
+}
+
+.brandLink {
+  display: inline-block;
+
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+
+  transition: color var(--transition-fast);
+}
+
+.brandLink:hover {
+  color: var(--text-primary);
+}
+
+.brandLink:focus {
+  outline: none;
+  color: var(--text-primary);
+}
+
+.brandLink:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ==========================================================================
+   Navigation - Center section with segmented tab links
+   VISUAL CHANGE: Transformed into boxed/segmented tabs with separators
+   ========================================================================== */
+.nav {
+  flex: 1;
+  display: flex;
+  min-width: 0;
+}
+
+/* Container for nav tabs with border separators */
+.navList {
+  display: flex;
+  align-items: center;
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  /* Vertical separators between nav items */
+  border-left: 1px solid var(--header-border);
+  border-right: 1px solid var(--header-border);
+}
+
+.navItem {
+  margin: 0;
+  padding: 0;
+
+  /* Vertical separator between nav items */
+  position: relative;
+}
+
+.navItem:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 20px;
+  background: var(--header-border);
+}
+
+/* VISUAL CHANGE: Nav links now look like rectangular tabs */
+.navLink {
+  display: inline-block;
+  padding: 0.625rem 1rem;
+
+  color: var(--text-secondary);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+
+  /* Rectangular tab appearance - no/minimal border-radius */
+  border-radius: 0;
+
+  transition: all var(--transition-fast);
+}
+
+.navLink:hover {
+  color: var(--text-primary);
+  background: var(--nav-hover-bg);
+}
+
+.navLink:focus {
+  outline: none;
+  color: var(--text-primary);
+  background: var(--nav-hover-bg);
+}
+
+.navLink:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: -2px;
+}
+
+/* VISUAL CHANGE: Active tab has highlighted bottom border/accent line */
+.navLink.active {
+  color: var(--text-primary);
+  background: rgba(88, 166, 255, 0.08);
+
+  /* Prominent bottom accent border */
+  box-shadow: inset 0 -2px 0 var(--accent-color);
+}
+
+.navLink.active:hover {
+  color: var(--text-primary);
+  background: rgba(88, 166, 255, 0.12);
+}
+
+/* ==========================================================================
+   Contact Section - Right side contact link
+   VISUAL CHANGE: Styled as a boxed tab to match nav
+   ========================================================================== */
+.contact {
+  flex-shrink: 0;
+  padding-left: 0;
+}
+
+/* VISUAL CHANGE: Contact link now looks like a tab */
+.contactLink {
+  display: inline-block;
+  padding: 0.625rem 1rem;
+
+  color: var(--text-secondary);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+
+  /* Rectangular appearance */
+  border-radius: 0;
+
+  transition: all var(--transition-fast);
+}
+
+.contactLink:hover {
+  color: var(--text-primary);
+  background: var(--nav-hover-bg);
+}
+
+.contactLink:focus {
+  outline: none;
+  color: var(--text-primary);
+  background: var(--nav-hover-bg);
+}
+
+.contactLink:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: -2px;
+}
+
+/* VISUAL CHANGE: Active state with bottom accent border */
+.contactLink.active {
+  color: var(--text-primary);
+  background: rgba(88, 166, 255, 0.08);
+  box-shadow: inset 0 -2px 0 var(--accent-color);
+}
+
+.contactLink.active:hover {
+  color: var(--text-primary);
+  background: rgba(88, 166, 255, 0.12);
+}
+
+/* ==========================================================================
+   Tablet Breakpoint (<= 768px)
+   VISUAL CHANGE: Tighter spacing, maintains tab structure
+   ========================================================================== */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 0.75rem;
+    min-height: 52px;
+  }
+
+  .brandLink {
+    font-size: 0.8125rem;
+  }
+
+  .navLink {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+  }
+
+  .navItem:not(:last-child)::after {
+    height: 16px;
+  }
+
+  .contactLink {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+  }
+}
+
+/* ==========================================================================
+   Mobile Breakpoint (<= 480px)
+   VISUAL CHANGE: Stacked layout, maintains tab appearance
+   ========================================================================== */
+@media (max-width: 480px) {
+  .header {
+    padding: 0.5rem 0;
+  }
+
+  .container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0.75rem;
+    min-height: fit-content;
+    gap: 0.5rem;
+
+    border-left: 1px solid var(--header-border);
+    border-right: 1px solid var(--header-border);
+  }
+
+  .brand {
+    order: 1;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .brandLink {
+    font-size: 0.8125rem;
+  }
+
+  .nav {
+    order: 2;
+    width: 100%;
+    min-width: unset;
+  }
+
+  /* Mobile nav list maintains border separators */
+  .navList {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .navItem:not(:last-child)::after {
+    height: 18px;
+  }
+
+  .navLink {
+    padding: 0.5rem 0.625rem;
+    font-size: 0.75rem;
+  }
+
+  .contact {
+    order: 3;
+    padding: 0;
+  }
+
+  .contactLink {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+  }
+}
+
+/* ==========================================================================
+   Accessibility - Reduced Motion Preference
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .header,
+  .container,
+  .brandLink,
+  .navLink,
+  .contactLink {
+    transition: none;
+  }
+
+  .brandLink:hover,
+  .navLink:hover,
+  .contactLink:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+/* ==========================================================================
+   Print Styles
+   ========================================================================== */
+@media print {
+  .header {
+    background: none;
+    border-bottom: 1px solid #ccc;
+    box-shadow: none;
+  }
+
+  .container {
+    background: none;
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+
+  .brandLink,
+  .navLink,
+  .contactLink {
+    color: #333;
+  }
+}
