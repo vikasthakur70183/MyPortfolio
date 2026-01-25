@@ -1,9 +1,10 @@
 import { createBrowserRouter } from "react-router";
 import MainLayout from "./layouts/MainLayout.jsx";
-import HomePage from "./Pages/HomePage.jsx";
+
 import AboutMe from "./Pages/AboutMe.jsx";
 import Projects from "./Pages/Projects.jsx";
 import ContactMe from "./Pages/ContactMe.jsx";
+import Home from "./pages/Home/Home.jsx";
 
 const router = createBrowserRouter([
   {
@@ -12,7 +13,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <HomePage />,
+        element: <Home/>,
       },
       {
         path: "about-me",

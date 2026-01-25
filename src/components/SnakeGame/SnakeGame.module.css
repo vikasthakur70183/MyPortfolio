@@ -1,0 +1,82 @@
+.gamePanel {
+  background: var(--panel-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: var(--glow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+.gameGrid {
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(20, 1fr);
+  gap: 1px;
+  background: var(--border-color);
+  padding: 0.5rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.cell {
+  width: 15px;
+  height: 15px;
+  background: transparent;
+  border-radius: 2px;
+  transition: background-color 0.1s ease;
+}
+
+.snakeHead {
+  background: var(--accent-color);
+  box-shadow: 0 0 5px var(--accent-color);
+}
+
+.snakeBody {
+  background: #ffffff;
+  box-shadow: 0 0 3px #ffffff;
+}
+
+.food {
+  background: #ff6b6b;
+  box-shadow: 0 0 5px #ff6b6b;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.button {
+  background: var(--accent-color);
+  color: #000000;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.button:hover {
+  background: #00a8cc;
+}
+
+.gameOverText {
+  color: var(--text-color);
+  font-family: 'Fira Code', monospace;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.score {
+  color: var(--muted-text);
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9rem;
+}
