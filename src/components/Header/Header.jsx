@@ -14,7 +14,7 @@ function Header() {
       <div className={styles.container}>
         <div className={styles.brand}>
           <NavLink to="/" className={styles.brandLink}>
-            michael-weaver
+            vikas-thakur
           </NavLink>
         </div>
 

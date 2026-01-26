@@ -365,7 +365,7 @@ function SnakeGame() {
                 Score: {score}
               </p>
               <button className={styles.overlayButton} onClick={startGame}>
-                start-again
+                play-again
               </button>
             </div>
           )}

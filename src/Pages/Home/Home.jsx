@@ -11,7 +11,7 @@ function Home() {
           <p className={styles.mutedText}>Hi all. I am</p>
 
           <h1 className={styles.heading}>
-            Michael Weaver
+            Vikas Thakur
           </h1>
 
           <p className={styles.role}>
