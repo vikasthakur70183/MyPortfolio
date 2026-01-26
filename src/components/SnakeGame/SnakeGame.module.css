@@ -1,153 +1,408 @@
+/* ==========================================================================
+   SnakeGame - Complete Redesign with Detailed Styling
+   ========================================================================== */
+
+/* Font import for Fira Code */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@450&display=swap');
+
+/* ================= MAIN WRAPPER ================= */
+
 .wrapper {
   display: flex;
   justify-content: center;
+  align-items: flex-start;
+  padding: 32px;
 }
 
+/* Main container with gradient background */
 .card {
-  display: flex;
-  gap: 1.5rem;
-  background: linear-gradient(135deg, #234e52, #2b2f77);
-  padding: 1.5rem;
-  border-radius: 14px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
-}
-
-/* ================= GAME GRID ================= */
-
-.gameArea {
   position: relative;
-  background: #1c2333;
-  border-radius: 12px;
-  padding: 1rem;
+  display: flex;
+  gap: 24px;
+  padding: 32px;
+  border-radius: 8px;
+  border: 1px solid #314158;
+  background: linear-gradient(
+    152deg,
+    rgba(23, 85, 83, 0.7) 0%,
+    rgba(67, 217, 173, 0.09) 100%
+  );
+  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(32px);
+  box-shadow: 
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.1),
+    0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(15, 14px);
-  grid-template-rows: repeat(15, 14px);
-  gap: 4px;
+/* ================= DECORATIVE CORNER BOLTS ================= */
+
+.bolt {
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  box-shadow: 
+    2px 2px 2px rgba(0, 0, 0, 0.3),
+    inset 1px 1px 1px rgba(255, 255, 255, 0.2);
 }
 
-.cell {
-  width: 14px;
-  height: 14px;
-  background: #0d1117;
+.boltTopLeft {
+  top: 12px;
+  left: 12px;
+  background: radial-gradient(circle at 30% 30%, #196C6A, #114B4A);
+}
+
+.boltTopRight {
+  top: 12px;
+  right: 12px;
+  background: radial-gradient(circle at 30% 30%, #164C51, #0D3A40);
+}
+
+.boltBottomLeft {
+  bottom: 12px;
+  left: 12px;
+  background: radial-gradient(circle at 30% 30%, #234B7C, #122E4F);
+}
+
+.boltBottomRight {
+  bottom: 12px;
+  right: 12px;
+  background: radial-gradient(circle at 30% 30%, #217D7A, #114B4A);
+}
+
+/* Center cross-hair for bolts */
+.bolt::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 3px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.3);
   border-radius: 50%;
 }
 
-.head {
-  background: #5ef2c3;
-  box-shadow: 0 0 12px rgba(94, 242, 195, 0.9);
+/* ================= GAME BOARD (LEFT SECTION) ================= */
+
+.gameBoard {
+  position: relative;
+  width: 238.69px;
+  height: 405.32px;
+  background: #1d293d;
+  border-radius: 8px;
+  box-shadow: 
+    inset 1px 5px 11px rgba(2, 18, 27, 0.71);
+  overflow: hidden;
 }
 
-.body {
-  background: #6ddccf;
+/* SVG Snake Container */
+.svgContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 
-.food {
-  background: #ffdf6c;
-  box-shadow: 0 0 10px #ffdf6c;
+/* SVG Snake Styles */
+.snakePath {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-/* ================= OVERLAY ================= */
+/* Food on game board */
+.gameFood {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gameFoodOuter {
+  width: 20.7px;
+  height: 20.7px;
+  border-radius: 50%;
+  background: #46ECD5;
+  opacity: 0.1;
+}
+
+.gameFoodMiddle {
+  position: absolute;
+  width: 14.7px;
+  height: 14.7px;
+  border-radius: 50%;
+  background: #46ECD5;
+  opacity: 0.2;
+}
+
+.gameFoodInner {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #46ECD5;
+}
+
+/* Start Button */
+.startButton {
+  position: absolute;
+  top: 311.68px;
+  left: 65px;
+  background: #ffb86a;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: none;
+  color: #020618;
+  font-family: 'Fira Code', monospace;
+  font-size: 14px;
+  font-weight: 450;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.startButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 184, 106, 0.4);
+}
+
+.startButton:active {
+  transform: translateY(0);
+}
+
+/* ================= RIGHT SECTION ================= */
+
+.rightSection {
+  width: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ================= GAME NAVIGATION PANEL ================= */
+
+.navPanel {
+  background: #1d293d;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.instructions {
+  color: #f8fafc;
+  font-family: 'Fira Code', monospace;
+  font-size: 14px;
+  font-weight: 450;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+/* D-Pad Controls */
+.dPad {
+  display: grid;
+  grid-template-columns: repeat(3, 48px);
+  grid-template-rows: repeat(2, 48px);
+  gap: 8px;
+  justify-content: center;
+}
+
+.dPadButton {
+  width: 48px;
+  height: 48px;
+  padding: 6px;
+  background: #0a0a0a;
+  border: 1px solid #314158;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.dPadButton:hover {
+  border-color: #43D9AD;
+  box-shadow: 0 0 8px rgba(67, 217, 173, 0.3);
+}
+
+.dPadButton:active,
+.dPadButton.active {
+  background: #1d293d;
+  border-color: #43D9AD;
+}
+
+.dPadIcon {
+  width: 18px;
+  height: 18px;
+  fill: #f8fafc;
+}
+
+.dPadIconUp {
+  transform: rotate(180deg);
+}
+
+.dPadIconLeft {
+  transform: rotate(90deg);
+}
+
+.dPadIconDown {
+  transform: rotate(0deg);
+}
+
+.dPadIconRight {
+  transform: rotate(-90deg);
+}
+
+/* Empty cells in D-Pad grid */
+.dPadEmpty {
+  width: 48px;
+  height: 48px;
+}
+
+/* ================= FOOD LEFT INDICATOR ================= */
+
+.foodLeftPanel {
+  padding: 0 10px;
+}
+
+.foodLeftLabel {
+  color: #f8fafc;
+  font-family: 'Fira Code', monospace;
+  font-size: 14px;
+  font-weight: 450;
+  margin-bottom: 10px;
+}
+
+.foodItems {
+  display: grid;
+  grid-template-columns: repeat(5, 20.69px);
+  grid-template-rows: repeat(2, 20.69px);
+  gap: 8px;
+}
+
+.foodItem {
+  width: 20.69px;
+  height: 20.69px;
+  position: relative;
+}
+
+.foodItemOuter {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #46ECD5;
+  opacity: 0.1;
+}
+
+.foodItemMiddle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 14.7px;
+  height: 14.7px;
+  border-radius: 50%;
+  background: #46ECD5;
+  opacity: 0.2;
+}
+
+.foodItemInner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #46ECD5;
+}
+
+.foodItemDimmed {
+  opacity: 0.3;
+}
+
+/* ================= SKIP BUTTON ================= */
+
+.skipButton {
+  align-self: flex-end;
+  background: transparent;
+  border: 1px solid #f8fafc;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: #f8fafc;
+  font-family: 'Fira Code', monospace;
+  font-size: 14px;
+  font-weight: 450;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.skipButton:hover {
+  background: rgba(248, 250, 252, 0.1);
+}
+
+/* ================= GAME OVER OVERLAY ================= */
 
 .overlay {
   position: absolute;
   inset: 0;
-  background: rgba(13, 17, 23, 0.85);
+  background: rgba(13, 17, 23, 0.9);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
-  border-radius: 12px;
+  gap: 16px;
+  border-radius: 8px;
+  z-index: 10;
 }
 
-.overlay p {
-  color: #5ef2c3;
+.overlayTitle {
+  color: #43D9AD;
   font-family: 'Fira Code', monospace;
-  letter-spacing: 0.1em;
+  font-size: 18px;
+  font-weight: 450;
+  letter-spacing: 0.05em;
 }
 
-.overlay button {
-  background: transparent;
+.overlayScore {
+  color: #f8fafc;
+  font-family: 'Fira Code', monospace;
+  font-size: 14px;
+  font-weight: 450;
+}
+
+.overlayButton {
+  background: #ffb86a;
+  padding: 10px 12px;
+  border-radius: 8px;
   border: none;
-  color: #c9d1d9;
-  cursor: pointer;
-}
-
-/* ================= SIDE PANEL ================= */
-
-.sidePanel {
-  width: 160px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  color: #c9d1d9;
+  color: #020618;
   font-family: 'Fira Code', monospace;
-  font-size: 0.75rem;
-}
-.help{
-  background: #1D293D;
-  padding: 10px;
-  border-radius: 10%;
-}
-.help p,
-.food p {
-  opacity: 0.7;
-}
-
-
-.keys {
-  display: grid;
-  grid-template-columns: repeat(3, 24px);
-  grid-template-rows: repeat(2, 24px);
-  gap: 6px;
-  margin-top: 0.5rem;
-  justify-items: center;
-  align-items: center;
-  justify-content: center;
-}
-
-.keys_span {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 24px;
-  height: 24px;
-  background: #0d1117;
-  border-radius: 4px;
-}
-
-.dots {
-  display: grid;
-  grid-template-columns: repeat(5, 10px);
-  gap: 6px;
-  margin-top: 0.5rem;
-}
-
-.dot,
-.dotActive {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #2f3b52;
-}
-
-.dotActive {
-  background: #5ef2c3;
-  box-shadow: 0 0 8px #5ef2c3;
-}
-
-button {
-  background: transparent;
-  border: 1px solid #c9d1d9;
-  border-radius: 6px;
-  padding: 0.4rem 0;
-  color: #c9d1d9;
+  font-size: 14px;
+  font-weight: 450;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.skip {
-  opacity: 0.7;
+.overlayButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 184, 106, 0.4);
 }
+
+/* ================= SCORE DISPLAY ================= */
+
+.scoreDisplay {
+  color: #f8fafc;
+  font-family: 'Fira Code', monospace;
+  font-size: 14px;
+  font-weight: 450;
+  text-align: center;
+  padding: 10px;
+  background: #1d293d;
+  border-radius: 8px;
+}
+
