@@ -87,11 +87,16 @@
   font-family: 'Fira Code', monospace;
   font-size: 0.75rem;
 }
-
+.help{
+  background: #1D293D;
+  padding: 10px;
+  border-radius: 10%;
+}
 .help p,
 .food p {
   opacity: 0.7;
 }
+
 
 .keys {
   display: grid;
@@ -101,9 +106,10 @@
   margin-top: 0.5rem;
   justify-items: center;
   align-items: center;
+  justify-content: center;
 }
 
-.keys span {
+.keys_span {
   display: flex;
   justify-content: center;
   align-items: center;
