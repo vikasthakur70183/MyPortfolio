@@ -96,13 +96,19 @@
 .keys {
   display: grid;
   grid-template-columns: repeat(3, 24px);
+  grid-template-rows: repeat(2, 24px);
   gap: 6px;
   margin-top: 0.5rem;
+  justify-items: center;
+  align-items: center;
 }
 
 .keys span {
-  text-align: center;
-  padding: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
   background: #0d1117;
   border-radius: 4px;
 }

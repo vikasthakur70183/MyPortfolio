@@ -114,7 +114,9 @@ function SnakeGame() {
             <p>// use keyboard</p>
             <p>// arrows to play</p>
             <div className={styles.keys}>
+              <span></span>
               <span>▲</span>
+              <span></span>
               <span>◀</span>
               <span>▼</span>
               <span>▶</span>
