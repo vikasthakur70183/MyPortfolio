@@ -1,0 +1,96 @@
+.sidebar {
+  background-color: var(--bg-primary, #020618);
+  width: 300px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--border-primary, #314158);
+  flex-shrink: 0;
+}
+
+.projectsHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  color: var(--text-secondary, #90A1B9);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  transition: background-color 0.15s ease;
+}
+
+.projectsHeader:hover {
+  background-color: rgba(144, 161, 185, 0.1);
+}
+
+.techList {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 16px;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.checkboxWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hiddenInput {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.customCheckbox {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: 2px solid var(--checkbox-active, #62748E);
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.customCheckbox.checked {
+  background-color: var(--checkbox-active, #62748E);
+}
+
+.checkmark {
+  width: 14px;
+  height: 14px;
+}
+
+.checkboxIcon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: var(--text-secondary, #90A1B9);
+}
+
+.checkboxText {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--text-secondary, #90A1B9);
+}
+

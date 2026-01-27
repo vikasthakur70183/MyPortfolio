@@ -22,3 +22,29 @@ main {
   flex-direction: column;
 }
 
+/* ============================================
+   PROJECTS PAGE COLOR PALETTE
+   ============================================ */
+:root {
+  /* Dark Theme Colors */
+  --bg-primary: #020618;
+  --bg-surface: #0F172B;
+  
+  /* Borders */
+  --border-primary: #314158;
+  --border-secondary: #1D293D;
+  
+  /* Text Colors */
+  --text-primary: #F8FAFC;
+  --text-secondary: #90A1B9;
+  
+  /* Accent Colors */
+  --accent-purple: #615FFF;
+  --accent-interactive: #45556C;
+  --checkbox-active: #62748E;
+  --badge-bg: #A3B3FF;
+  
+  /* Font Family */
+  --font-mono: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+}
+
