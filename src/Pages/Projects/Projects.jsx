@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import ProjectsSidebar from "../../components/ProjectsSidebar/ProjectsSidebar";
 import ProjectTabs from "../../components/ProjectTabs/ProjectTabs";
 import ProjectCard from "../../components/ProjectCard/ProjectCard";
@@ -136,7 +136,7 @@ function Projects() {
         </div>
       </div>
 
-      <ScrollIndicator />
+      <ScrollIndicator containerRef={gridRef} />
     </div>
   );
 }
