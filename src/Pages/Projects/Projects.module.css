@@ -24,16 +24,16 @@
 
 .projectsGrid {
   flex: 1;
-  padding: 64px 0px 0px 64px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
-  max-height: 60vh;
-  scroll-behavior: smooth;
-  align-content: start;
-  height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
+    padding: 70px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    max-height: 60vh;
+    scroll-behavior: smooth;
+    align-content: start;
+    height: 100%;
+    overflow-y: visible;
+    overflow-x: scroll;
 }
 
 /* Custom scrollbar styles - always visible when scrolling */

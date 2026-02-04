@@ -1,25 +1,46 @@
+/* Premium Dark Developer Portfolio Card */
+
 .card {
-  background-color: var(--bg-primary, #020618);
-  border: 1px solid var(--border-secondary, #1d293d);
+  background-color: #02071a;
+  border: 1px solid #1e1b3a;
   border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.08);
+  box-shadow:
+    0 4px 20px rgba(99, 102, 241, 0.06),
+    0 1px 3px rgba(0, 0, 0, 0.3);
   transition:
     transform 0.2s ease,
-    box-shadow 0.2s ease;
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
   width: calc(33.333% - 27px);
   min-width: 300px;
   flex: 1;
+  overflow: hidden;
 }
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 30px rgba(99, 102, 241, 0.12);
+  box-shadow:
+    0 12px 40px rgba(99, 102, 241, 0.12),
+    0 4px 12px rgba(0, 0, 0, 0.4);
+  border-color: #2d2a5a;
 }
 
+/* Image Section */
 .imageSection {
   position: relative;
-  height: 145px;
+  height: 150px;
   overflow: hidden;
+}
+
+.imageSection img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .imageSection img {
+  transform: scale(1.05);
 }
 
 .imagePlaceholder {
@@ -28,11 +49,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(
-    135deg,
-    var(--accent-purple, #615fff) 0%,
-    #4f46e5 100%
-  );
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 50%, #4338ca 100%);
 }
 
 .placeholderText {
@@ -40,80 +57,102 @@
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  font-family: var(--font-mono);
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.6);
+  font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
   letter-spacing: 2px;
+  font-weight: 500;
 }
 
+/* Gradient Overlay */
 .gradientOverlay {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 60px;
-  background: linear-gradient(
-    to top,
-    var(--bg-primary, #020618) 0%,
-    transparent 100%
-  );
+  height: 80px;
+  /* background: linear-gradient(to top, #02071a 0%, transparent 100%); */
   pointer-events: none;
 }
 
+/* Tech Badge */
 .techBadge {
   position: absolute;
   top: 12px;
   right: 12px;
-  width: 28px;
-  height: 28px;
-  background-color: var(--badge-bg, #a3b3ff);
-  border-radius: 20px;
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #818cf8 0%, #6366f1 100%);
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow:
+    0 2px 8px rgba(99, 102, 241, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.techBadge svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Content */
 .content {
   padding: 20px 24px 24px;
 }
 
+/* Title Row */
 .title {
-  font-family: var(--font-mono);
+  font-family: "SF Mono", "Fira Code", "Consolas", monospace;
   font-size: 16px;
   font-weight: 500;
-  margin: 0 0 12px;
+  margin: 0 0 14px;
   letter-spacing: 0.5px;
+  color: #e2e8f0;
+  line-height: 1.4;
+}
+
+.titleAccent {
+  color: #818cf8;
 }
 
 .subtitle {
-  color: var(--text-secondary, #90a1b9);
+  color: #64748b;
   font-weight: 400;
 }
 
+/* Description */
 .description {
-  font-family: var(--font-mono);
-  font-size: 18px;
-  color: var(--text-secondary, #90a1b9);
+  font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+  font-size: 13px;
+  color: #94a3b8;
   line-height: 1.7;
-  margin: 0 0 20px;
+  margin: 0 0 24px;
+  letter-spacing: 0.3px;
 }
 
+/* Action Button */
 .button {
-  background-color: var(--accent-interactive, #45556c);
-  color: white;
-  border: none;
+  background-color: #1e293b;
+  color: #e2e8f0;
+  border: 1px solid #334155;
   padding: 12px 18px;
   border-radius: 8px;
-  font-family: var(--font-mono);
-  font-size: 14px;
+  font-family: "SF Mono", "Fira Code", "Consolas", monospace;
+  font-size: 13px;
   cursor: pointer;
-  transition: background-color 0.15s ease;
+  transition: all 0.15s ease;
   width: 100%;
+  letter-spacing: 0.5px;
 }
 
 .button:hover {
-  background-color: #55667a;
+  background-color: #334155;
+  border-color: #475569;
+  color: #f1f5f9;
 }
 
 /* Responsive Design */
@@ -128,5 +167,17 @@
   .card {
     width: 100%;
     min-width: 100%;
+  }
+
+  .content {
+    padding: 18px 20px 20px;
+  }
+
+  .title {
+    font-size: 15px;
+  }
+
+  .description {
+    font-size: 12px;
   }
 }
