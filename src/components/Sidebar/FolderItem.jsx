@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { RiFolder3Fill, RiArrowRightSLine } from 'react-icons/ri';
 import styles from './Sidebar.module.css';
 
-const FolderItem = ({ name, children }) => {
+const FolderItem = ({ name,Foldercolor ,children }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   const toggleCollapse = (e) => {
@@ -21,9 +21,9 @@ const FolderItem = ({ name, children }) => {
         <span className={`${styles.chevron} ${!isCollapsed ? styles.expanded : ''}`}>
           <RiArrowRightSLine />
         </span>
-        <span className={styles.folderIcon}>
-          <RiFolder3Fill />
-        </span>
+        <span className={`${styles.folderIcon} ${styles.folderIcon1}`}>
+          <RiFolder3Fill color={Foldercolor} />
+          </span>
         {name}
       </button>
       {!isCollapsed && (

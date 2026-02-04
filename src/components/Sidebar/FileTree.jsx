@@ -13,15 +13,15 @@ const FileTree = () => {
 
   return (
     <ul className={styles.fileTree}>
-      <FolderItem name="personal-info">
+      <FolderItem name="personal-info" Foldercolor="rgba(255,99,126,1)">
         <FileItem name="bio" isActive={activeFile === 'bio'} onClick={() => handleFileClick('bio')} />
         <FileItem name="interests" isActive={activeFile === 'interests'} onClick={() => handleFileClick('interests')} />
-        <FolderItem name="education">
+        <FolderItem name="education" Foldercolor="rgba(0,213,190,1)">
           <FileItem name="high-school" isActive={activeFile === 'high-school'} onClick={() => handleFileClick('high-school')} />
           <FileItem name="university" isActive={activeFile === 'university'} onClick={() => handleFileClick('university')} />
         </FolderItem>
       </FolderItem>
-      <FolderItem name="contacts">
+      <FolderItem name="contacts" Foldercolor="rgba(97,95,255,1)">
         <FileItem 
           name="user@gmail.com" 
           isActive={activeFile === 'user@gmail.com'} 

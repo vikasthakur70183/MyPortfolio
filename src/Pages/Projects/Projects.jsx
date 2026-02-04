@@ -48,6 +48,27 @@ const sampleProjects = [
     accentColor: '#06B6D4',
     description: 'First version of my personal portfolio showcasing various projects and skills.',
   },
+  {
+    id: 7,
+    title: 'Project 4',
+    subtitle: '_e-commerce',
+    accentColor: '#EC4899',
+    description: 'Modern e-commerce platform with payment integration and inventory management.',
+  },
+  {
+    id: 8,
+    title: 'Project 5',
+    subtitle: '_chat-app',
+    accentColor: '#8B5CF6',
+    description: 'Real-time chat application with WebSocket support and end-to-end encryption.',
+  },
+  {
+    id: 9,
+    title: 'Project 6',
+    subtitle: '_portfolio-v1',
+    accentColor: '#06B6D4',
+    description: 'First version of my personal portfolio showcasing various projects and skills.',
+  },
 ];
 
 function Projects() {
