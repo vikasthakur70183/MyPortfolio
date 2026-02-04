@@ -1,9 +1,14 @@
 .card {
   background-color: var(--bg-primary, #020618);
-  border: 1px solid var(--border-secondary, #1D293D);
+  border: 1px solid var(--border-secondary, #1d293d);
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(99, 102, 241, 0.08);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  width: calc(33.333% - 27px);
+  min-width: 300px;
+  flex: 1;
 }
 
 .card:hover {
@@ -23,7 +28,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--accent-purple, #615FFF) 0%, #4f46e5 100%);
+  background: linear-gradient(
+    135deg,
+    var(--accent-purple, #615fff) 0%,
+    #4f46e5 100%
+  );
 }
 
 .placeholderText {
@@ -43,7 +52,11 @@
   left: 0;
   right: 0;
   height: 60px;
-  background: linear-gradient(to top, var(--bg-primary, #020618) 0%, transparent 100%);
+  background: linear-gradient(
+    to top,
+    var(--bg-primary, #020618) 0%,
+    transparent 100%
+  );
   pointer-events: none;
 }
 
@@ -53,7 +66,7 @@
   right: 12px;
   width: 28px;
   height: 28px;
-  background-color: var(--badge-bg, #A3B3FF);
+  background-color: var(--badge-bg, #a3b3ff);
   border-radius: 20px;
   display: flex;
   align-items: center;
@@ -74,20 +87,20 @@
 }
 
 .subtitle {
-  color: var(--text-secondary, #90A1B9);
+  color: var(--text-secondary, #90a1b9);
   font-weight: 400;
 }
 
 .description {
   font-family: var(--font-mono);
   font-size: 18px;
-  color: var(--text-secondary, #90A1B9);
+  color: var(--text-secondary, #90a1b9);
   line-height: 1.7;
   margin: 0 0 20px;
 }
 
 .button {
-  background-color: var(--accent-interactive, #45556C);
+  background-color: var(--accent-interactive, #45556c);
   color: white;
   border: none;
   padding: 12px 18px;
@@ -103,3 +116,17 @@
   background-color: #55667a;
 }
 
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .card {
+    width: calc(50% - 20px);
+    min-width: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
+    min-width: 100%;
+  }
+}

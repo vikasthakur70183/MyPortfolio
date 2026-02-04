@@ -9,11 +9,11 @@ import { SiTypescript } from 'react-icons/si';
 import styles from './ProjectsSidebar.module.css';
 
 const technologies = [
-  { id: 'react', name: 'React', icon: RiReactjsFill, color: '#61DAFB' },
-  { id: 'vue', name: 'Vue', icon: RiVuejsFill, color: '#42B883' },
-  { id: 'typescript', name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
-  { id: 'node', name: 'Node.js', icon: RiNodejsFill, color: '#339933' },
-  { id: 'graphql', name: 'GraphQL', icon: RiGlobalFill, color: '#E10098' },
+  { id: 'react', name: 'React', icon: RiReactjsFill, color: '#62748E' },
+  { id: 'vue', name: 'Vue', icon: RiVuejsFill, color: '62748E' },
+  { id: 'typescript', name: 'TypeScript', icon: SiTypescript, color: '#62748E' },
+  { id: 'node', name: 'Node.js', icon: RiNodejsFill, color: '#62748E' },
+  { id: 'graphql', name: 'GraphQL', icon: RiGlobalFill, color: '#62748E' },
 ];
 
 function CustomCheckbox({ checked, onChange, label, icon: Icon, color }) {
