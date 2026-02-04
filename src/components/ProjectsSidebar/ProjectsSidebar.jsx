@@ -1,19 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   RiReactjsFill,
   RiVuejsFill,
   RiNodejsFill,
   RiGlobalFill,
-} from 'react-icons/ri';
-import { SiTypescript } from 'react-icons/si';
-import styles from './ProjectsSidebar.module.css';
+} from "react-icons/ri";
+import { SiTypescript } from "react-icons/si";
+import styles from "./ProjectsSidebar.module.css";
 
 const technologies = [
-  { id: 'react', name: 'React', icon: RiReactjsFill, color: '#62748E' },
-  { id: 'vue', name: 'Vue', icon: RiVuejsFill, color: '62748E' },
-  { id: 'typescript', name: 'TypeScript', icon: SiTypescript, color: '#62748E' },
-  { id: 'node', name: 'Node.js', icon: RiNodejsFill, color: '#62748E' },
-  { id: 'graphql', name: 'GraphQL', icon: RiGlobalFill, color: '#62748E' },
+  { id: "react", name: "React", icon: RiReactjsFill, color: "#62748E" },
+  { id: "vue", name: "Vue", icon: RiVuejsFill, color: "62748E" },
+  {
+    id: "typescript",
+    name: "TypeScript",
+    icon: SiTypescript,
+    color: "#62748E",
+  },
+  { id: "node", name: "Node.js", icon: RiNodejsFill, color: "#62748E" },
+  { id: "graphql", name: "GraphQL", icon: RiGlobalFill, color: "#62748E" },
 ];
 
 function CustomCheckbox({ checked, onChange, label, icon: Icon, color }) {
@@ -28,7 +33,7 @@ function CustomCheckbox({ checked, onChange, label, icon: Icon, color }) {
         />
         <div
           className={`${styles.customCheckbox} ${
-            checked ? styles.checked : ''
+            checked ? styles.checked : ""
           }`}
         >
           {checked && (
@@ -47,29 +52,18 @@ function CustomCheckbox({ checked, onChange, label, icon: Icon, color }) {
         </div>
       </div>
 
-      {Icon && (
-        <Icon
-          size={20}
-          color={color}
-          className={styles.checkboxIcon}
-        />
-      )}
+      {Icon && <Icon size={20} color={color} className={styles.checkboxIcon} />}
 
       <span className={styles.checkboxText}>{label}</span>
     </label>
   );
 }
 
-function ProjectsSidebar() {
-  const [selectedTech, setSelectedTech] = useState(['react']);
+function ProjectsSidebar({ selectedTech, onToggleTechnology }) {
   const [isExpanded, setIsExpanded] = useState(true);
 
   const toggleTechnology = (id) => {
-    setSelectedTech((prev) =>
-      prev.includes(id)
-        ? prev.filter((t) => t !== id)
-        : [...prev, id]
-    );
+    onToggleTechnology(id);
   };
 
   const ArrowDown = () => (
@@ -81,8 +75,8 @@ function ProjectsSidebar() {
       stroke="currentColor"
       strokeWidth="2"
       style={{
-        transform: isExpanded ? 'rotate(0deg)' : 'rotate(-90deg)',
-        transition: 'transform 0.2s ease',
+        transform: isExpanded ? "rotate(0deg)" : "rotate(-90deg)",
+        transition: "transform 0.2s ease",
       }}
     >
       <polyline points="6 9 12 15 18 9" />

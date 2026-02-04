@@ -18,7 +18,7 @@
 }
 
 .tabs::-webkit-scrollbar-thumb {
-  background-color: var(--checkbox-active, #62748E);
+  background-color: var(--checkbox-active, #62748e);
 }
 
 .tab {
@@ -27,7 +27,7 @@
   gap: 8px;
   padding: 0 16px;
   background-color: var(--bg-primary, #020618);
-  color: var(--text-secondary, #90A1B9);
+  color: var(--text-secondary, #90a1b9);
   cursor: pointer;
   border-left: 1px solid var(--border-primary, #314158);
   border-right: 1px solid var(--border-primary, #314158);
@@ -36,6 +36,7 @@
   font-size: 14px;
   height: 100%;
   min-width: 240px;
+  max-width: 400px;
   transition: all 0.15s ease;
   position: relative;
   box-sizing: border-box;
@@ -46,13 +47,13 @@
 }
 
 .tab.active {
-  color: var(--text-primary, #F8FAFC);
+  color: var(--text-primary, #f8fafc);
   border-bottom: none;
   background-color: var(--bg-primary, #020618);
 }
 
 .tab.active::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -65,16 +66,20 @@
   font-size: 14px;
   display: flex;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .tabLabel {
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
 }
 
 .closeButton {
   background: none;
   border: none;
-  color: var(--text-secondary, #90A1B9);
+  color: var(--text-secondary, #90a1b9);
   cursor: pointer;
   padding: 4px;
   border-radius: 4px;
@@ -86,8 +91,8 @@
 }
 
 .closeButton:hover {
-  background-color: var(--accent-interactive, #45556C);
-  color: var(--text-primary, #F8FAFC);
+  background-color: var(--accent-interactive, #45556c);
+  color: var(--text-primary, #f8fafc);
 }
 
 .emptyTab {
@@ -95,4 +100,3 @@
   border-bottom: 1px solid var(--border-primary, #314158);
   min-width: 100px;
 }
-

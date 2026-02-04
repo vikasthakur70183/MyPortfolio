@@ -1,13 +1,13 @@
-import React from 'react';
-import styles from './ProjectTabs.module.css';
+import React from "react";
+import styles from "./ProjectTabs.module.css";
 
 const CloseIcon = () => (
-  <svg 
-    width="14" 
-    height="14" 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
+  <svg
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
@@ -17,36 +17,52 @@ const CloseIcon = () => (
   </svg>
 );
 
-function ProjectTabs({ activeTab = 'React', onClose, onTabClick }) {
-  const tabs = [
-    { id: 'React', icon: '⚛' },
-    { id: 'Vue', icon: '💚' },
-    { id: 'TypeScript', icon: 'TS' },
-  ];
+// Map tech IDs to display names
+const techNames = {
+  react: "React",
+  vue: "Vue",
+  typescript: "TypeScript",
+  node: "Node",
+  graphql: "GraphQL",
+};
+
+function ProjectTabs({
+  activeTab = "React",
+  onClose,
+  onTabClick,
+  selectedTech = [],
+}) {
+  // Create combined display text from selected technologies
+  const combinedTabText = selectedTech
+    .map((techId) => techNames[techId] || techId)
+    .join(": ");
 
   return (
     <div className={styles.tabsContainer}>
       <div className={styles.tabs}>
-        {tabs.map((tab) => (
+        {selectedTech.length > 0 ? (
           <div
-            key={tab.id}
-            className={`${styles.tab} ${activeTab === tab.id ? styles.active : ''}`}
-            onClick={() => onTabClick && onTabClick(tab.id)}
+            className={`${styles.tab} ${activeTab === "React" ? styles.active : ""}`}
+            onClick={() => onTabClick && onTabClick("React")}
           >
-            <span className={styles.tabIcon}>{tab.icon}</span>
-            <span className={styles.tabLabel}>{tab.id}</span>
+            <span className={styles.tabIcon}>⚛</span>
+            <span className={styles.tabLabel}>{combinedTabText}</span>
             <button
               className={styles.closeButton}
               onClick={(e) => {
                 e.stopPropagation();
-                onClose && onClose(tab.id);
+                onClose && onClose("React");
               }}
-              aria-label={`Close ${tab.id} tab`}
+              aria-label="Close tab"
             >
               <CloseIcon />
             </button>
           </div>
-        ))}
+        ) : (
+          <div className={`${styles.tab} ${styles.active}`}>
+            <span className={styles.tabLabel}>No projects selected</span>
+          </div>
+        )}
         {/* Empty tabs to extend the bar horizontally */}
         <div className={styles.emptyTab} />
         <div className={styles.emptyTab} />
@@ -57,4 +73,3 @@ function ProjectTabs({ activeTab = 'React', onClose, onTabClick }) {
 }
 
 export default ProjectTabs;
-

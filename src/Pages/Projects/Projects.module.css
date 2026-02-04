@@ -24,16 +24,16 @@
 
 .projectsGrid {
   flex: 1;
-    padding: 70px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-    max-height: 60vh;
-    scroll-behavior: smooth;
-    align-content: start;
-    height: 100%;
-    overflow-y: visible;
-    overflow-x: scroll;
+  padding: 70px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  max-height: 60vh;
+  scroll-behavior: smooth;
+  align-content: start;
+  height: 100%;
+  overflow-y: visible;
+  overflow-x: scroll;
 }
 
 /* Custom scrollbar styles - always visible when scrolling */
@@ -73,6 +73,29 @@
 
 .customScrollbar::-webkit-scrollbar-thumb:active {
   background-color: var(--accent-purple, #615fff);
+}
+
+/* Empty state for no matching projects */
+.noProjects {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  color: var(--text-secondary, #90a1b9);
+  font-family: var(--font-mono);
+  text-align: center;
+}
+
+.noProjects p {
+  margin: 8px 0;
+  font-size: 16px;
+}
+
+.noProjects p:first-child {
+  font-size: 18px;
+  color: var(--text-primary, #f8fafc);
 }
 
 /* Responsive Design */
