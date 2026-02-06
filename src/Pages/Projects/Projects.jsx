@@ -98,7 +98,8 @@ function Projects() {
   };
 
   const handleTabClose = (tabId) => {
-    console.log("Close tab:", tabId);
+    // Reset filters to only React when closing the tab
+    setSelectedTech(["react"]);
   };
 
   // Toggle technology with React as default (cannot deselect all)

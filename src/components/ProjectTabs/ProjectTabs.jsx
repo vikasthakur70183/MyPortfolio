@@ -63,10 +63,10 @@ function ProjectTabs({
             <span className={styles.tabLabel}>No projects selected</span>
           </div>
         )}
-        {/* Empty tabs to extend the bar horizontally */}
+        {/* Empty tabs to extend the bar horizontally
         <div className={styles.emptyTab} />
         <div className={styles.emptyTab} />
-        <div className={styles.emptyTab} />
+        <div className={styles.emptyTab} /> */}
       </div>
     </div>
   );

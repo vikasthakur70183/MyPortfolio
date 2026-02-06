@@ -6,8 +6,7 @@
 .header {
   --bg-outer: #0f172b;
   --bg-inner: #0f172b;
-  --border-main: #30363d;
-  --border-soft: #21262d;
+  --border-primary: #314158;
 
   --text-primary: #c9d1d9;
   --text-secondary: #8b949e;
@@ -20,7 +19,7 @@
 
   width: 100%;
   background: var(--bg-outer);
-  border-bottom: 1px solid var(--border-main);
+  border-bottom: 1px solid var(--border-primary, #314158);
 }
 
 /* ===================== INNER PANEL ===================== */
@@ -28,13 +27,8 @@
   display: flex;
   align-items: stretch;
 
-
-
   background: var(--bg-inner);
-  border-left: 1px solid var(--border-main);
-  border-right: 1px solid var(--border-main);
-
-  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  font-family: "SF Mono", "Fira Code", "Consolas", monospace;
   min-height: 52px;
 }
 
@@ -42,8 +36,8 @@
 .brand {
   display: flex;
   align-items: center;
-  padding: 0 1rem;
-  border-right: 1px solid var(--border-main);
+  border-right: 1px solid var(--border-primary, #314158);
+  min-width: 300px;
 }
 
 .brandLink {
@@ -52,6 +46,7 @@
   font-weight: 600;
   letter-spacing: 0.02em;
   text-decoration: none;
+  margin-left: 20px;
 }
 
 /* ===================== NAV ===================== */
@@ -84,8 +79,10 @@
   color: var(--text-secondary);
   text-decoration: none;
 
-  border-right: 1px solid var(--border-soft);
-  transition: background var(--transition), color var(--transition);
+  border-right: 1px solid var(--border-primary, #314158);
+  transition:
+    background var(--transition),
+    color var(--transition);
 }
 
 .navLink:hover {
@@ -104,7 +101,7 @@
 .contact {
   display: flex;
   align-items: stretch;
-  border-left: 1px solid var(--border-main);
+  border-left: 1px solid var(--border-primary, #314158);
 }
 
 .contactLink {
@@ -118,7 +115,9 @@
   color: var(--text-secondary);
   text-decoration: none;
 
-  transition: background var(--transition), color var(--transition);
+  transition:
+    background var(--transition),
+    color var(--transition);
 }
 
 .contactLink:hover {
@@ -152,7 +151,7 @@
   .brand {
     justify-content: center;
     border-right: none;
-    border-bottom: 1px solid var(--border-main);
+    border-bottom: 1px solid var(--border-primary, #314158);
   }
 
   .nav {
@@ -162,6 +161,6 @@
   .contact {
     justify-content: center;
     border-left: none;
-    border-top: 1px solid var(--border-main);
+    border-top: 1px solid var(--border-primary, #314158);
   }
 }
